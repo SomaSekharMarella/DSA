@@ -1,10 +1,8 @@
 # Write your MySQL query statement below
 select d.name as Department,
 e.name as Employee,
-e.salary as Salary from Department d
-left join Employee e 
-on d.id = e.departmentId 
-where e.salary = (
-    select max(e2.salary) from Employee e2
-    where e2.departmentId = e.departmentId
+e.salary as Salary from Employee e right join Department d
+on e.departmentId = d.id where
+e.salary = (
+    select Max(salary) from Employee e2 where e.departmentId = e2.departmentId
 );
